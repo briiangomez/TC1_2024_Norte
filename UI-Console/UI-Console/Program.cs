@@ -9,6 +9,7 @@ using Services.Facade.Extentions;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -20,66 +21,83 @@ namespace UI_Console
     {
         static void Main(string[] args)
         {
+            Log log = new Log(DateTime.Now, "Probando bitacora....");
 
-            Permiso permiso = new Permiso();
-            permiso.Id = Guid.NewGuid();
-            permiso.Name = "Gestion de Ventas";
-            permiso.DataKey = "mnuGestionVentas";
 
-            Permiso permiso2 = new Permiso();
-            permiso2.Id = Guid.NewGuid();
-            permiso2.Name = "Visualizacion de Gestion de Ventas";
-            permiso2.DataKey = "mnuVisualizacionGestionVentas";
+            LoggerService.WriteLog(log);
 
-            Perfil perfil = new Perfil(permiso);
-            perfil.Id = Guid.NewGuid();
-            perfil.Name = "Rol/Perfil de Ventas";
 
-            Perfil perfil2 = new Perfil(permiso2);
-            perfil2.Id = Guid.NewGuid();
-            perfil2.Name = "Rol/Perfil Visualizacion de Ventas";
-
-            Perfil perfilAdmin = new Perfil(perfil);
-            perfilAdmin.Id = Guid.NewGuid();
-            perfilAdmin.Name = "Rol Administrador";
-            perfilAdmin.Add(perfil2);
-
-            Usuario user = new Usuario();
-            user.Id = Guid.NewGuid();
-            user.UserName = "ian";
-            user.Password = "PaisesBajos2024";
-            user.Mail = "ian.paisesbajos@mail.com";
-            user.Accesos.Add(perfilAdmin);
-
-            Permiso permiso3 = new Permiso();
-            permiso3.Id = Guid.NewGuid();
-            permiso3.Name = "Gestion de Compras";
-            permiso3.DataKey = "mnuGestionCompras";
-
-            user.Accesos.Add(permiso3);
-
-            foreach (var item in user.Accesos)
+            try
             {
-                if(item.GetCount() > 0)
-                {
-                    //Perfil -> Familia -> Composite
-                    Perfil perf = item as Perfil;
-                    //Funcion recursiva....
-                    foreach (var perm in perf.Accesos)
-                    {
-                        if (perm.GetCount() == 0)
-                        {
-                            Permiso p = perm as Permiso;
-                            Console.WriteLine($"Soy un permiso {p.DataKey}");
-                        }
-                    }
-                }
-                else
-                {
-                    Permiso p = item as Permiso;
-                    Console.WriteLine($"Soy un permiso {p.DataKey}");
-                }
+
+             throw new Exception("Excepcion inesperada....");
             }
+            catch (Exception ex)
+            {
+                Log log2 = new Log(DateTime.Now, "Error....",TraceLevel.Error);
+                LoggerService.WriteLog(log2, ex);
+                throw;
+            }
+
+            //Permiso permiso = new Permiso();
+            //permiso.Id = Guid.NewGuid();
+            //permiso.Name = "Gestion de Ventas";
+            //permiso.DataKey = "mnuGestionVentas";
+
+            //Permiso permiso2 = new Permiso();
+            //permiso2.Id = Guid.NewGuid();
+            //permiso2.Name = "Visualizacion de Gestion de Ventas";
+            //permiso2.DataKey = "mnuVisualizacionGestionVentas";
+
+            //Perfil perfil = new Perfil(permiso);
+            //perfil.Id = Guid.NewGuid();
+            //perfil.Name = "Rol/Perfil de Ventas";
+
+            //Perfil perfil2 = new Perfil(permiso2);
+            //perfil2.Id = Guid.NewGuid();
+            //perfil2.Name = "Rol/Perfil Visualizacion de Ventas";
+
+            //Perfil perfilAdmin = new Perfil(perfil);
+            //perfilAdmin.Id = Guid.NewGuid();
+            //perfilAdmin.Name = "Rol Administrador";
+            //perfilAdmin.Add(perfil2);
+
+            //Usuario user = new Usuario();
+            //user.Id = Guid.NewGuid();
+            //user.UserName = "ian";
+            //user.Password = "PaisesBajos2024";
+            //user.Mail = "ian.paisesbajos@mail.com";
+            //user.Accesos.Add(perfilAdmin);
+
+            //Permiso permiso3 = new Permiso();
+            //permiso3.Id = Guid.NewGuid();
+            //permiso3.Name = "Gestion de Compras";
+            //permiso3.DataKey = "mnuGestionCompras";
+
+            //user.Accesos.Add(permiso3);
+
+            //foreach (var item in user.Accesos)
+            //{
+            //    if(item.GetCount() > 0)
+            //    {
+            //        //Perfil -> Familia -> Composite
+            //        Perfil perf = item as Perfil;
+            //        //Funcion recursiva....
+            //        foreach (var perm in perf.Accesos)
+            //        {
+            //            if (perm.GetCount() == 0)
+            //            {
+            //                Permiso p = perm as Permiso;
+            //                Console.WriteLine($"Soy un permiso {p.DataKey}");
+            //            }
+            //        }
+            //    }
+            //    else
+            //    {
+            //        Permiso p = item as Permiso;
+            //        Console.WriteLine($"Soy un permiso {p.DataKey}");
+            //    }
+            //}
 
             Console.ReadKey();
 

@@ -42,21 +42,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dao\Contracts\ILoggerDao.cs" />
     <Compile Include="Dao\LanguageDao.cs" />
+    <Compile Include="Dao\LoggerDao.cs" />
     <Compile Include="Dao\UserDao.cs" />
     <Compile Include="Domain\Composite\Acceso.cs" />
     <Compile Include="Domain\Composite\Perfil.cs" />
     <Compile Include="Domain\Composite\Permiso.cs" />
     <Compile Include="Domain\Exceptions\WordNotFoundException.cs" />
+    <Compile Include="Domain\Log.cs" />
     <Compile Include="Domain\User.cs" />
     <Compile Include="Domain\Composite\Usuario.cs" />
     <Compile Include="Facade\Extentions\LanguageExtention.cs" />
     <Compile Include="Facade\LanguageService.cs" />
+    <Compile Include="Facade\LoggerService.cs" />
     <Compile Include="Facade\UserService.cs" />
     <Compile Include="Logic\LanguageLogic.cs" />
+    <Compile Include="Logic\LoggerLogic.cs" />
     <Compile Include="Logic\UserLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Dao\Scripts\scriptSecurityDB.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
