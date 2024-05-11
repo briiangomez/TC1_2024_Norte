@@ -44,8 +44,12 @@
   <ItemGroup>
     <Compile Include="Dao\LanguageDao.cs" />
     <Compile Include="Dao\UserDao.cs" />
+    <Compile Include="Domain\Composite\Acceso.cs" />
+    <Compile Include="Domain\Composite\Perfil.cs" />
+    <Compile Include="Domain\Composite\Permiso.cs" />
     <Compile Include="Domain\Exceptions\WordNotFoundException.cs" />
     <Compile Include="Domain\User.cs" />
+    <Compile Include="Domain\Composite\Usuario.cs" />
     <Compile Include="Facade\Extentions\LanguageExtention.cs" />
     <Compile Include="Facade\LanguageService.cs" />
     <Compile Include="Facade\UserService.cs" />
