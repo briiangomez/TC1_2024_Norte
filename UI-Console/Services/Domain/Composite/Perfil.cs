@@ -15,7 +15,8 @@ namespace Services.Domain.Composite
 
         public Perfil(Acceso acceso)
         {
-            accesos.Add(acceso);
+            if(acceso != null)
+                accesos.Add(acceso);
         }
 
         public override void Add(Acceso component)

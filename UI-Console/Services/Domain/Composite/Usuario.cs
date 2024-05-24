@@ -23,8 +23,6 @@ namespace Services.Domain.Composite
             
         }
 
-
-
         public List<Permiso> GetPermisos()
         {
             return new List<Permiso>();

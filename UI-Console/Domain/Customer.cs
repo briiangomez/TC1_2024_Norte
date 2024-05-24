@@ -17,7 +17,7 @@ namespace Domain
 
         public string Name { get; set; }
 
-        public CategoryEnum Category { get; set; }
+        public Category Category { get; set; }
 
         /// <summary>
         /// Constructor con todos los argumentos...
@@ -31,7 +31,12 @@ namespace Domain
         }
         public Customer()
         {
-            
+
         }
+    }
+
+    public class Category
+    {
+
     }
 }

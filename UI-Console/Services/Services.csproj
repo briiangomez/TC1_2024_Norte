@@ -42,7 +42,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dao\Contracts\IGenericDao.cs" />
+    <Compile Include="Dao\Contracts\IJoinRepository.cs" />
     <Compile Include="Dao\Contracts\ILoggerDao.cs" />
+    <Compile Include="Dao\Contracts\IObjectMapper.cs" />
+    <Compile Include="Dao\Helpers\SqlHelper.cs" />
+    <Compile Include="Dao\Implementations\SqlServer\FamiliaPatenteRepository.cs" />
+    <Compile Include="Dao\Implementations\SqlServer\Mappers\PerfilMapper.cs" />
+    <Compile Include="Dao\Implementations\SqlServer\Mappers\PermisoMapper.cs" />
+    <Compile Include="Dao\Implementations\SqlServer\PerfilRepository.cs" />
+    <Compile Include="Dao\Implementations\SqlServer\PermisoRepository.cs" />
     <Compile Include="Dao\LanguageDao.cs" />
     <Compile Include="Dao\LoggerDao.cs" />
     <Compile Include="Dao\UserDao.cs" />
@@ -65,5 +74,6 @@
   <ItemGroup>
     <Content Include="Dao\Scripts\scriptSecurityDB.sql" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

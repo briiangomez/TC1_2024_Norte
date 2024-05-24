@@ -33,7 +33,9 @@ namespace Dao.Implementations.SqlServer.Mappers
             {
                 IdCustomer = Guid.Parse(values[0].ToString()),
                 Code = int.Parse(values[1].ToString()),
-                Name = values[2].ToString()
+                Name = values[2].ToString(),
+                //Hidratación
+                //Category = CategoryRepository.GetById(Guid.Parse(values[3].ToString()))
             };
         }
 

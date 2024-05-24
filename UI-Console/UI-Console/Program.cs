@@ -2,6 +2,7 @@
 using Dao.Factory;
 using Domain;
 using Logic;
+using Services.Dao.Implementations.SqlServer;
 using Services.Domain;
 using Services.Domain.Composite;
 using Services.Facade;
@@ -21,11 +22,13 @@ namespace UI_Console
     {
         static void Main(string[] args)
         {
+            Perfil perfil = PerfilRepository.Current.GetById(Guid.Parse("9A818C81-BA52-490C-A4C3-97F30A5DB69C"));
+
+            Console.WriteLine(perfil.Accesos.Count);
+
             Log log = new Log(DateTime.Now, "Probando bitacora....");
 
-
             LoggerService.WriteLog(log);
-
 
             try
             {
