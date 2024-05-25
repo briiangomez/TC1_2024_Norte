@@ -18,5 +18,10 @@ namespace Services.Facade.Extentions
         {
             return LanguageLogic.Find(word);
         }
+
+        public static void HandleException(this Exception ex)
+        {
+            Console.WriteLine("Aplicando política de exception...." + ex.Message);
+        }
     }
 }

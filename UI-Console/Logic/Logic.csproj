@@ -41,7 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessExceptions\ClienteNoExisteException.cs" />
     <Compile Include="CustomerLogic.cs" />
+    <Compile Include="Implementations\ClienteBusinessRule.cs" />
+    <Compile Include="Interfaces\IGenericBusinessRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -52,6 +55,10 @@
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{b2e2efeb-9b42-4a52-a3ad-0815e7597bad}</Project>
       <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{9F3CE983-DF0F-4F2F-A0EC-52522565A14A}</Project>
+      <Name>Services</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

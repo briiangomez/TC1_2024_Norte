@@ -60,8 +60,12 @@
     <Compile Include="Domain\Composite\Permiso.cs" />
     <Compile Include="Domain\Exceptions\WordNotFoundException.cs" />
     <Compile Include="Domain\Log.cs" />
+    <Compile Include="Domain\ServicesExceptions\BLLException.cs" />
+    <Compile Include="Domain\ServicesExceptions\DALException.cs" />
+    <Compile Include="Domain\ServicesExceptions\UIException.cs" />
     <Compile Include="Domain\User.cs" />
     <Compile Include="Domain\Composite\Usuario.cs" />
+    <Compile Include="Facade\ExceptionService.cs" />
     <Compile Include="Facade\Extentions\LanguageExtention.cs" />
     <Compile Include="Facade\LanguageService.cs" />
     <Compile Include="Facade\LoggerService.cs" />

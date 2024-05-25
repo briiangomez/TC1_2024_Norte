@@ -59,6 +59,10 @@
       <Project>{b2e2efeb-9b42-4a52-a3ad-0815e7597bad}</Project>
       <Name>Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{9F3CE983-DF0F-4F2F-A0EC-52522565A14A}</Project>
+      <Name>Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Implementations\Mongo\Mappers\" />

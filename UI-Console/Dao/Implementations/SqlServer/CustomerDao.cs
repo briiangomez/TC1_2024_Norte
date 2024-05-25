@@ -9,27 +9,29 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using Dao.Implementations.SqlServer.Mappers;
+using Services.Facade;
+using Services.Domain.ServicesExceptions;
 
 namespace Dao.Implementations.SqlServer
 {
 
-	internal sealed class CustomerDao : ICustomerDao
+    internal sealed class CustomerDao : ICustomerDao
     {
-		#region singleton
-		private readonly static CustomerDao _instance = new CustomerDao();
+        #region singleton
+        private readonly static CustomerDao _instance = new CustomerDao();
 
-		public static CustomerDao Current
-		{
-			get
-			{
-				return _instance;
-			}
-		}
+        public static CustomerDao Current
+        {
+            get
+            {
+                return _instance;
+            }
+        }
 
-		private CustomerDao()
-		{
-			//Implent here the initialization of your singleton
-		}
+        private CustomerDao()
+        {
+            //Implent here the initialization of your singleton
+        }
         #endregion
 
 
@@ -69,7 +71,7 @@ namespace Dao.Implementations.SqlServer
             object returnValue = SqlHelper.ExecuteScalar("CustomerInsert", CommandType.StoredProcedure,
                 new SqlParameter[] { new SqlParameter("@Code", obj.Code),
                                      new SqlParameter("@Name", obj.Name) });
-                                    // parameter});
+            // parameter});
 
             obj.IdCustomer = Guid.Parse(returnValue.ToString());
         }
@@ -87,18 +89,27 @@ namespace Dao.Implementations.SqlServer
         public Customer GetById(Guid id)
         {
             Customer customer = default;
-
-            using (var reader = SqlHelper.ExecuteReader(SelectOneStatement, CommandType.Text,
-              new SqlParameter[] { new SqlParameter("@IdCustomer", id) }))
+            try
             {
-                //Mientras tenga algo en mi tabla de Customers
-                if (reader.Read())
-                {
-                    object[] data = new object[reader.FieldCount];
-                    reader.GetValues(data);
 
-                    customer = CustomerMapper.Current.Fill(data);
+                using (var reader = SqlHelper.ExecuteReader(SelectOneStatement, CommandType.Text,
+                  new SqlParameter[] { new SqlParameter("@IdCustomer", id) }))
+                {
+                    //Mientras tenga algo en mi tabla de Customers
+                    if (reader.Read())
+                    {
+                        object[] data = new object[reader.FieldCount];
+                        reader.GetValues(data);
+
+                        customer = CustomerMapper.Current.Fill(data);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                //ex.HandleException();
+                ExceptionService.Current.HandleException(new DALException(ex));
+                throw;
             }
 
             return customer;
@@ -106,14 +117,15 @@ namespace Dao.Implementations.SqlServer
 
         public List<Customer> GetAll()
         {
-            List <Customer> customers = new List<Customer>();
+            List<Customer> customers = new List<Customer>();
 
             using (var reader = SqlHelper.ExecuteReader(SelectAllStatement, CommandType.Text,
                 new SqlParameter[] { }))
             {
                 //Mientras tenga algo en mi tabla de Customers
-                while(reader.Read()) { 
-                
+                while (reader.Read())
+                {
+
                     object[] data = new object[reader.FieldCount];
                     reader.GetValues(data);
                     //Data Mapper...
