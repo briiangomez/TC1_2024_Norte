@@ -8,6 +8,8 @@ namespace Services.Dao.Contracts
 {
     internal interface IJoinRepository<T>
     {
+        void Insert(T obj);
+
         void Fill(T obj);
     }
 }

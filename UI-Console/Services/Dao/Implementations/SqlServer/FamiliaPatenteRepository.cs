@@ -44,7 +44,27 @@ namespace Services.Dao.Implementations.SqlServer
 					obj.Accesos.Add(PermisoRepository.Current.GetById(idPermiso));
 				}
 			}
-        }        
+        }
+
+        public void Insert(Perfil obj)
+        {
+            //LLamar al delete de familiafamilia
+            //Familia_FamiliaDeleteByIdFamilia
+            //LLamar al delete de familiapatente
+            //Familia_PatenteDeleteByIdFamilia
+            foreach (var item in obj.Accesos)
+			{
+				if (item.GetCount() == 0)
+				{					
+					//Insertar en FamiliaPatente
+
+				}
+				else				
+				{ 
+					//Insertar en FamiliaFamilia
+				}
+			}
+        }
     }
 
 }
