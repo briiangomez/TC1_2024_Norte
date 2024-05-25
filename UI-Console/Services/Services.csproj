@@ -72,6 +72,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Dao\Scripts\BaseSeguridadCompletaConSP.sql" />
     <Content Include="Dao\Scripts\scriptSecurityDB.sql" />
   </ItemGroup>
   <ItemGroup />

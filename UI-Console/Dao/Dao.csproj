@@ -67,5 +67,9 @@
   <ItemGroup>
     <Content Include="Implementations\SqlServer\Scripts\script.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Snippets\singleton.snippet" />
+    <None Include="Snippets\staments.snippet" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
